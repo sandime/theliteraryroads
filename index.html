@@ -1,162 +1,143 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Literary Roads | Coming Soon</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --midnight-navy: #1A1B2E;
+            --starlight-turquoise: #40E0D0;
+            --atomic-orange: #FF4E00;
+        }
+
+        body {
+            background-color: var(--midnight-navy);
+            /* Subtle Map Grid Background */
+            background-image: 
+                linear-gradient(rgba(64, 224, 208, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(64, 224, 208, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: white;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: screen;
+        }
+
+        .neon-text {
+            font-family: 'Bungee', cursive;
+            color: #fff;
+            text-align: center;
+            line-height: 1.1;
+            /* High-end Neon Glow */
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--starlight-turquoise),
+                0 0 30px var(--starlight-turquoise),
+                0 0 40px var(--starlight-turquoise),
+                0 0 55px var(--starlight-turquoise);
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 20px var(--starlight-turquoise),
+                    0 0 30px var(--starlight-turquoise),
+                    0 0 40px var(--starlight-turquoise);
+            }
+            20%, 24%, 55% {        
+                text-shadow: none;
+                opacity: 0.8;
+            }
+        }
+
+        .tagline {
+            font-family: 'Special Elite', cursive;
+            color: var(--atomic-orange);
+            letter-spacing: 1px;
+        }
+
+        .input-glow:focus {
+            outline: none;
+            box-shadow: 0 0 15px var(--starlight-turquoise);
+            border-color: var(--starlight-turquoise);
+        }
+
+        /* Decorative "Teal Haze" Route Line in Background */
+        .route-path {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            width: 150vw;
+            height: 150px;
+            background: var(--starlight-turquoise);
+            filter: blur(100px);
+            opacity: 0.12;
+            z-index: -1;
+        }
+    </style>
 </head>
-<body>
-<p class="p1">&lt;!--<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>The Literary Roads "Coming Soon" Landing Page</p>
-<p class="p1"><span class="Apple-converted-space">  </span>Instructions:<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>1. Save this entire block as "index.html"</p>
-<p class="p1"><span class="Apple-converted-space">  </span>2. Upload to your GitHub repository (theliteraryroads)</p>
-<p class="p1"><span class="Apple-converted-space">  </span>3. Ensure your Hover domain is pointed to GitHub Pages</p>
-<p class="p1">--&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;The Literary Roads | Coming Soon&lt;/title&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Fonts --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com" rel="stylesheet"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--midnight-navy: #1A1B2E;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--starlight-turquoise: #40E0D0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--atomic-orange: #FF4E00;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--midnight-navy);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>/* Subtle Map Grid Background */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-image:<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>linear-gradient(rgba(64, 224, 208, 0.05) 1px, transparent 1px),</p>
-<p class="p1"><span class="Apple-converted-space">                </span>linear-gradient(90deg, rgba(64, 224, 208, 0.05) 1px, transparent 1px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-size: 50px 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.neon-text {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bungee', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>/* Multi-layered Neon Glow matching the image */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-shadow:<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>0 0 5px #fff,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>0 0 10px #fff,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>0 0 20px var(--starlight-turquoise),</p>
-<p class="p1"><span class="Apple-converted-space">                </span>0 0 30px var(--starlight-turquoise),</p>
-<p class="p1"><span class="Apple-converted-space">                </span>0 0 40px var(--starlight-turquoise),</p>
-<p class="p1"><span class="Apple-converted-space">                </span>0 0 55px var(--starlight-turquoise),</p>
-<p class="p1"><span class="Apple-converted-space">                </span>0 0 75px var(--starlight-turquoise);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: flicker 3s infinite alternate;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes flicker {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0%, 18%, 22%, 25%, 53%, 57%, 100% {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>text-shadow:<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>0 0 5px #fff,</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>0 0 10px #fff,</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>0 0 20px var(--starlight-turquoise),</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>0 0 30px var(--starlight-turquoise),</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>0 0 40px var(--starlight-turquoise);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>20%, 24%, 55% { <span class="Apple-converted-space">       </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>text-shadow: none;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 0.8;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.tagline {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Special Elite', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: var(--atomic-orange);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: 1px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.input-glow:focus {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>outline: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 15px var(--starlight-turquoise);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-color: var(--starlight-turquoise);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Decorative "Teal Haze" Route Line */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.route-path {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translate(-50%, -50%) rotate(-15deg);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 120vw;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: var(--starlight-turquoise);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>filter: blur(80px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.15;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: -1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="flex flex-col items-center justify-center min-h-screen p-6"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Ambient Glow Background --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="route-path"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="max-w-4xl w-full flex flex-col items-center"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Logo Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="mb-8 scale-75 md:scale-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-2xl md:text-3xl neon-text mb-2"&gt;THE&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-5xl md:text-8xl neon-text mb-2"&gt;LITERARY&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-5xl md:text-8xl neon-text"&gt;ROADS&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Tagline --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="tagline text-lg md:text-2xl text-center mb-16 italic"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Where every mile is a new chapter.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Email Signup --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="w-full max-w-md"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-center text-sm uppercase tracking-widest mb-4 opacity-70"&gt;Get an invite to the first trip&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;form class="flex flex-col md:flex-row gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;input<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>type="email"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>placeholder="Enter your email..."<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>class="bg-black/40 border border-white/20 rounded-none px-6 py-4 w-full input-glow transition-all duration-300"</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>required</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>type="submit"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>class="bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] hover:bg-[#40E0D0] hover:text-[#1A1B2E] font-bold px-8 py-4 uppercase tracking-widest transition-all duration-300 active:scale-95"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>Notify Me</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Footer Visual --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer class="absolute bottom-10 opacity-40"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="text-xs uppercase tracking-[0.5em] font-light"&gt;EST. 1955 | Coming 2026&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="min-h-screen p-6">
+
+    <div class="route-path"></div>
+
+    <main class="max-w-4xl w-full flex flex-col items-center justify-center">
+        
+        <!-- Logo Section -->
+        <div class="mb-8 scale-75 md:scale-100">
+            <h1 class="text-2xl md:text-3xl neon-text mb-2">THE</h1>
+            <h1 class="text-6xl md:text-9xl neon-text mb-2 tracking-tighter">LITERARY</h1>
+            <h1 class="text-6xl md:text-9xl neon-text tracking-tighter">ROADS</h1>
+        </div>
+
+        <!-- Tagline -->
+        <p class="tagline text-lg md:text-2xl text-center mb-16 italic">
+            Where every mile is a new chapter.
+        </p>
+
+        <!-- Email Signup -->
+        <div class="w-full max-w-md">
+            <p class="text-center text-xs uppercase tracking-widest mb-6 opacity-60">Get an invite to the first trip</p>
+            <form class="flex flex-col gap-4">
+                <input 
+                    type="email" 
+                    placeholder="Enter your email..." 
+                    class="bg-black/40 border border-white/20 rounded-none px-6 py-4 w-full input-glow transition-all duration-300 text-center"
+                    required
+                >
+                <button 
+                    type="submit" 
+                    class="bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] hover:bg-[#40E0D0] hover:text-[#1A1B2E] font-bold px-8 py-4 uppercase tracking-[0.2em] transition-all duration-300 active:scale-95"
+                >
+                    Notify Me
+                </button>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- Footer Visual -->
+    <footer class="mt-20 opacity-40">
+        <p class="text-[10px] uppercase tracking-[0.5em] font-light">EST. 1955 | Coming 2026</p>
+    </footer>
+
 </body>
 </html>
+
