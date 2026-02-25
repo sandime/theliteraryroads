@@ -22,7 +22,6 @@
 
         body {
             background-color: var(--midnight-navy);
-            /* Subtle Map Grid Background */
             background-image: 
                 linear-gradient(rgba(64, 224, 208, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(64, 224, 208, 0.05) 1px, transparent 1px);
@@ -33,7 +32,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: screen;
+            min-height: 100vh;
         }
 
         .neon-text {
@@ -41,7 +40,6 @@
             color: #fff;
             text-align: center;
             line-height: 1.1;
-            /* High-end Neon Glow */
             text-shadow: 
                 0 0 5px #fff,
                 0 0 10px #fff,
@@ -54,17 +52,9 @@
 
         @keyframes flicker {
             0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                text-shadow: 
-                    0 0 5px #fff,
-                    0 0 10px #fff,
-                    0 0 20px var(--starlight-turquoise),
-                    0 0 30px var(--starlight-turquoise),
-                    0 0 40px var(--starlight-turquoise);
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--starlight-turquoise), 0 0 30px var(--starlight-turquoise), 0 0 40px var(--starlight-turquoise);
             }
-            20%, 24%, 55% {        
-                text-shadow: none;
-                opacity: 0.8;
-            }
+            20%, 24%, 55% { text-shadow: none; opacity: 0.8; }
         }
 
         .tagline {
@@ -79,7 +69,6 @@
             border-color: var(--starlight-turquoise);
         }
 
-        /* Decorative "Teal Haze" Route Line in Background */
         .route-path {
             position: fixed;
             top: 50%;
@@ -94,7 +83,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen p-6">
+<body class="p-6">
 
     <div class="route-path"></div>
 
@@ -113,18 +102,19 @@
         </p>
 
         <!-- Marketing Pitch -->
-<div class="max-w-lg text-center mb-10 px-4">
-    <p class="tracking-widest text-sm md:text-base opacity-90 leading-relaxed" style="font-family: 'Atomic Age', sans-serif; text-transform: uppercase;">
-        A <span class="text-[#40E0D0] font-bold">soulful GPS</span> for book lovers. <br class="hidden md:block"> 
-        Discover independent bookstores, quiet cafes, and literary landmarks along your exact route.
-    </p>
-</div>
+        <div class="max-w-lg text-center mb-10 px-4">
+            <p class="tracking-widest text-sm md:text-base opacity-90 leading-relaxed uppercase" style="font-family: 'Atomic Age', sans-serif;">
+                A <span class="text-[#40E0D0] font-bold">soulful GPS</span> for book lovers. <br class="hidden md:block"> 
+                Discover independent bookstores, quiet cafes, and literary landmarks along your exact route.
+            </p>
+        </div>
         
-        <!-- Email Signup PAUSED FOR NOW
+        <!-- Email Signup Section -->
         <div class="w-full max-w-md">
-            <p class="text-center text-xs uppercase tracking-widest mb-6 opacity-60">Get an invite to the first trip</p>
-            <form class="flex flex-col gap-4">
+            <p id="signup-prompt" class="text-center text-xs uppercase tracking-widest mb-6 opacity-60">Get an invite to the first trip</p>
+            <form id="signup-form" class="flex flex-col gap-4">
                 <input 
+                    id="email-input"
                     type="email" 
                     placeholder="Enter your email..." 
                     class="bg-black/40 border border-white/20 rounded-none px-6 py-4 w-full input-glow transition-all duration-300 text-center"
@@ -132,98 +122,73 @@
                 >
                 <button 
                     type="submit" 
+                    id="submit-btn"
                     class="bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] hover:bg-[#40E0D0] hover:text-[#1A1B2E] font-bold px-8 py-4 uppercase tracking-[0.2em] transition-all duration-300 active:scale-95"
                 >
                     Notify Me
                 </button>
             </form>
-        </div> -->
-
-        
-<!-- Email Signup (Now Active with Firebase) -->
-<div class="w-full max-w-md">
-    <p class="text-center text-xs uppercase tracking-widest mb-6 opacity-60">Get an invite to the first trip</p>
-    <form id="signup-form" class="flex flex-col gap-4">
-        <input 
-            id="email-input"
-            type="email" 
-            placeholder="Enter your email..." 
-            class="bg-black/40 border border-white/20 rounded-none px-6 py-4 w-full input-glow transition-all duration-300 text-center"
-            required
-        >
-        <button 
-            type="submit" 
-            id="submit-btn"
-            class="bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] hover:bg-[#40E0D0] hover:text-[#1A1B2E] font-bold px-8 py-4 uppercase tracking-[0.2em] transition-all duration-300 active:scale-95"
-        >
-            Notify Me
-        </button>
-    </form>
-    
-   <!-- THIS IS THE NEW PART: It starts hidden with the 'hidden' class -->
-    <p id="success-msg" class="tagline text-center mt-8 hidden text-xl animate-pulse">
-        You're on the list, Navigator! <br>
-        <span class="text-xs opacity-60 uppercase tracking-widest">See you on the road.</span>
-    </p>
-</div>
-</div>
-
-        
-<!-- Firebase SDKs -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com";
-const firebaseConfig = {
-  apiKey: "AIzaSyAg-y6Bx075pPTxUZ8giyzOojx_c61O4BM",
-  authDomain: "the-literary-roads.firebaseapp.com",
-  projectId: "the-literary-roads",
-  storageBucket: "the-literary-roads.firebasestorage.app",
-  messagingSenderId: "305145573086",
-  appId: "1:305145573086:web:04a46d6d576ff01ec45c4f",
-  measurementId: "G-GDKFFPQYLT"  };
-  try {
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    const form = document.getElementById('signup-form');
-    const btn = document.getElementById('submit-btn');
-    const msg = document.getElementById('success-msg');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email-input').value;
-      btn.innerText = "SENDING...";
-      btn.disabled = true;
-
-      try {
-        await addDoc(collection(db, "waitlist"), {
-          email: email,
-          timestamp: serverTimestamp()
-        });
-        form.classList.add('hidden');
-        msg.classList.remove('hidden');
-      } catch (dbError) {
-        console.error("Database Error:", dbError);
-        alert("Database Error: " + dbError.message); // This will tell us the exact error
-        btn.innerText = "NOTIFY ME";
-        btn.disabled = false;
-      }
-    });
-  } catch (initError) {
-    console.error("Initialization Error:", initError);
-    alert("Initialization Error: " + initError.message);
-  }
-</script>
-
-
-        
+            
+            <p id="success-msg" class="tagline text-center mt-8 hidden text-xl animate-pulse">
+                You're on the list, Navigator! <br>
+                <span class="text-xs opacity-60 uppercase tracking-widest">See you on the road.</span>
+            </p>
+        </div>
     </main>
 
-    <!-- Footer Visual -->
     <footer class="mt-20 opacity-40">
         <p class="text-[10px] uppercase tracking-[0.5em] font-light">EST. 1955 | Coming 2026</p>
     </footer>
 
+    <!-- Firebase SDKs - FIXED URLS -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com";
+      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAg-y6Bx075pPTxUZ8giyzOojx_c61O4BM",
+        authDomain: "the-literary-roads.firebaseapp.com",
+        projectId: "the-literary-roads",
+        storageBucket: "the-literary-roads.firebasestorage.app",
+        messagingSenderId: "305145573086",
+        appId: "1:305145573086:web:04a46d6d576ff01ec45c4f",
+        measurementId: "G-GDKFFPQYLT"
+      };
+
+      try {
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const form = document.getElementById('signup-form');
+        const btn = document.getElementById('submit-btn');
+        const msg = document.getElementById('success-msg');
+        const prompt = document.getElementById('signup-prompt');
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = document.getElementById('email-input').value;
+          btn.innerText = "SENDING...";
+          btn.disabled = true;
+
+          try {
+            await addDoc(collection(db, "waitlist"), {
+              email: email,
+              timestamp: serverTimestamp()
+            });
+            form.classList.add('hidden');
+            prompt.classList.add('hidden');
+            msg.classList.remove('hidden');
+          } catch (dbError) {
+            console.error("Database Error:", dbError);
+            alert("Roadblock! " + dbError.message);
+            btn.innerText = "NOTIFY ME";
+            btn.disabled = false;
+          }
+        });
+      } catch (initError) {
+        console.error("Initialization Error:", initError);
+        alert("Initialization Error: " + initError.message);
+      }
+    </script>
 </body>
 </html>
-
