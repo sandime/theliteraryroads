@@ -141,10 +141,12 @@
     </footer>
 
     <!-- Firebase SDKs - FIXED URLS -->
-   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com";
+   <!-- Use the 'Compat' version which is more reliable for simple landing pages -->
+<script src="https://www.gstatic.com"></script>
+<script src="https://www.gstatic.com"></script>
 
+<script>
+  // 1. Configuration
   const firebaseConfig = {
     apiKey: "AIzaSyAg-y6Bx075pPTxUZ8giyzOojx_c61O4BM",
     authDomain: "the-literary-roads.firebaseapp.com",
@@ -155,52 +157,46 @@
     measurementId: "G-GDKFFPQYLT"
   };
 
-  // 1. Initializing and Catching Errors Immediately
-  let db;
-  try {
-    const app = initializeApp(firebaseConfig);
-    db = getFirestore(app);
-    console.log("Firebase Engine Started.");
-  } catch (e) {
-    alert("Firebase failed to load! " + e.message);
-  }
+  // 2. Initialize
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
+  // 3. Elements
   const form = document.getElementById('signup-form');
   const btn = document.getElementById('submit-btn');
   const msg = document.getElementById('success-msg');
   const prompt = document.getElementById('signup-prompt');
 
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const emailInput = document.getElementById('email-input');
-      const email = emailInput ? emailInput.value : '';
-      
-      btn.innerText = "SENDING...";
-      btn.disabled = true;
+  // 4. The Logic
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // THIS STOPS THE "?" REFRESH
+    
+    const email = document.getElementById('email-input').value;
+    
+    btn.innerText = "SENDING...";
+    btn.disabled = true;
 
-      try {
-        // 2. Testing the actual write
-        const docRef = await addDoc(collection(db, "waitlist"), {
-          email: email,
-          timestamp: serverTimestamp()
-        });
-        
-        console.log("Document written with ID: ", docRef.id);
-        form.classList.add('hidden');
-        if (prompt) prompt.classList.add('hidden');
+    db.collection("waitlist").add({
+        email: email,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(() => {
+        // SUCCESS
+        form.style.display = 'none';
+        if (prompt) prompt.style.display = 'none';
         msg.classList.remove('hidden');
-      } catch (dbError) {
-        console.error("Database Error:", dbError);
-        alert("Roadblock! " + dbError.message); // This will tell us if it's a Permission or Network issue
+        console.log("Navigator Added!");
+    })
+    .catch((error) => {
+        // ERROR
+        console.error("Error: ", error);
+        alert("Roadblock! " + error.message);
         btn.innerText = "NOTIFY ME";
         btn.disabled = false;
-      }
-    });
-  } else {
-    console.error("Form element 'signup-form' not found!");
-  }
+      });
+  });
 </script>
+
 
 </body>
 </html>
