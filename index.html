@@ -202,21 +202,21 @@
     btn.disabled = true;
 
     try {
-      // This line creates the "waitlist" collection automatically on the first go
       await addDoc(collection(db, "waitlist"), {
         email: email,
-        timestamp: serverTimestamp(),
-        source: "landing_page"
+        timestamp: serverTimestamp()
       });
+
+      // 1. Hide the form so it disappears
+      document.getElementById('signup-form').classList.add('hidden');
       
-      console.log("Success! Navigator added.");
-      form.classList.add('hidden');
-      msg.classList.remove('hidden');
+      // 2. Show the success message
+      document.getElementById('success-msg').classList.remove('hidden');
+      
+      console.log("Success! Navigator added to the trail.");
     } catch (error) {
-      console.error("Firebase Error: ", error);
-      alert("Roadblock! " + error.message);
-      btn.innerText = "NOTIFY ME";
-      btn.disabled = false;
+      console.error("Roadblock! ", error);
+      alert("Something went wrong. Check your connection!");
     }
   });
 </script>
