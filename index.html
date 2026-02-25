@@ -1,203 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Literary Roads | Coming Soon</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        :root {
-            --midnight-navy: #1A1B2E;
-            --starlight-turquoise: #40E0D0;
-            --atomic-orange: #FF4E00;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: var(--midnight-navy);
-            background-image: 
-                linear-gradient(rgba(64, 224, 208, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(64, 224, 208, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            color: white;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
+<title>The Literary Roads | Coming Soon</title>
 
-        .neon-text {
-            font-family: 'Bungee', cursive;
-            color: #fff;
-            text-align: center;
-            line-height: 1.1;
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #fff,
-                0 0 20px var(--starlight-turquoise),
-                0 0 30px var(--starlight-turquoise),
-                0 0 40px var(--starlight-turquoise),
-                0 0 55px var(--starlight-turquoise);
-            animation: flicker 3s infinite alternate;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--starlight-turquoise), 0 0 30px var(--starlight-turquoise), 0 0 40px var(--starlight-turquoise);
-            }
-            20%, 24%, 55% { text-shadow: none; opacity: 0.8; }
-        }
+<script src="https://cdn.tailwindcss.com"></script>
 
-        .tagline {
-            font-family: 'Special Elite', cursive;
-            color: var(--atomic-orange);
-            letter-spacing: 1px;
-        }
+<style>
 
-        .input-glow:focus {
-            outline: none;
-            box-shadow: 0 0 15px var(--starlight-turquoise);
-            border-color: var(--starlight-turquoise);
-        }
+:root{
+--midnight-navy:#1A1B2E;
+--starlight-turquoise:#40E0D0;
+--atomic-orange:#FF4E00;
+}
 
-        .route-path {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
-            width: 150vw;
-            height: 150px;
-            background: var(--starlight-turquoise);
-            filter: blur(100px);
-            opacity: 0.12;
-            z-index: -1;
-        }
-    </style>
+body{
+background-color:var(--midnight-navy);
+background-image:
+linear-gradient(rgba(64,224,208,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(64,224,208,0.05) 1px, transparent 1px);
+background-size:50px 50px;
+color:white;
+overflow-x:hidden;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+min-height:100vh;
+}
+
+.neon-text{
+font-family:'Bungee',cursive;
+color:#fff;
+text-align:center;
+line-height:1.1;
+text-shadow:
+0 0 5px #fff,
+0 0 10px #fff,
+0 0 20px var(--starlight-turquoise),
+0 0 30px var(--starlight-turquoise),
+0 0 40px var(--starlight-turquoise),
+0 0 55px var(--starlight-turquoise);
+animation:flicker 3s infinite alternate;
+}
+
+@keyframes flicker{
+0%,18%,22%,25%,53%,57%,100%{
+text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px var(--starlight-turquoise),0 0 30px var(--starlight-turquoise),0 0 40px var(--starlight-turquoise);
+}
+20%,24%,55%{
+text-shadow:none;
+opacity:.8;
+}
+}
+
+.tagline{
+font-family:'Special Elite',cursive;
+color:var(--atomic-orange);
+letter-spacing:1px;
+}
+
+.input-glow:focus{
+outline:none;
+box-shadow:0 0 15px var(--starlight-turquoise);
+border-color:var(--starlight-turquoise);
+}
+
+.route-path{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) rotate(-15deg);
+width:150vw;
+height:150px;
+background:var(--starlight-turquoise);
+filter:blur(100px);
+opacity:.12;
+z-index:-1;
+}
+
+</style>
 </head>
+
 <body class="p-6">
 
-    <div class="route-path"></div>
+<div class="route-path"></div>
 
-    <main class="max-w-4xl w-full flex flex-col items-center justify-center">
-        
-        <!-- Logo Section -->
-        <div class="mb-8 scale-75 md:scale-100">
-            <h1 class="text-2xl md:text-3xl neon-text mb-2">THE</h1>
-            <h1 class="text-6xl md:text-9xl neon-text mb-2 tracking-tighter">LITERARY</h1>
-            <h1 class="text-6xl md:text-9xl neon-text tracking-tighter">ROADS</h1>
-        </div>
+<main class="max-w-4xl w-full flex flex-col items-center justify-center">
 
-        <!-- Tagline -->
-        <p class="tagline text-lg md:text-2xl text-center mb-16 italic">
-            Where every mile is a new chapter.
-        </p>
+<div class="mb-8 scale-75 md:scale-100">
+<h1 class="text-2xl md:text-3xl neon-text mb-2">THE</h1>
+<h1 class="text-6xl md:text-9xl neon-text mb-2 tracking-tighter">LITERARY</h1>
+<h1 class="text-6xl md:text-9xl neon-text tracking-tighter">ROADS</h1>
+</div>
 
-        <!-- Marketing Pitch -->
-        <div class="max-w-lg text-center mb-10 px-4">
-            <p class="tracking-widest text-sm md:text-base opacity-90 leading-relaxed uppercase" style="font-family: 'Atomic Age', sans-serif;">
-                A <span class="text-[#40E0D0] font-bold">soulful GPS</span> for book lovers. <br class="hidden md:block"> 
-                Discover independent bookstores, quiet cafes, and literary landmarks along your exact route.
-            </p>
-        </div>
-        
-        <!-- Email Signup Section -->
-        <div class="w-full max-w-md">
-            <p id="signup-prompt" class="text-center text-xs uppercase tracking-widest mb-6 opacity-60">Get an invite to the first trip</p>
-            <form id="signup-form" class="flex flex-col gap-4">
-                <input 
-                    id="email-input"
-                    type="email" 
-                    placeholder="Enter your email..." 
-                    class="bg-black/40 border border-white/20 rounded-none px-6 py-4 w-full input-glow transition-all duration-300 text-center"
-                    required
-                >
-                <button 
-                    type="submit" 
-                    id="submit-btn"
-                    class="bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] hover:bg-[#40E0D0] hover:text-[#1A1B2E] font-bold px-8 py-4 uppercase tracking-[0.2em] transition-all duration-300 active:scale-95"
-                >
-                    Notify Me
-                </button>
-            </form>
-            
-            <p id="success-msg" class="tagline text-center mt-8 hidden text-xl animate-pulse">
-                You're on the list, Navigator! <br>
-                <span class="text-xs opacity-60 uppercase tracking-widest">See you on the road.</span>
-            </p>
-        </div>
-    </main>
+<p class="tagline text-lg md:text-2xl text-center mb-16 italic">
+Where every mile is a new chapter.
+</p>
 
-    <footer class="mt-20 opacity-40">
-        <p class="text-[10px] uppercase tracking-[0.5em] font-light">EST. 1955 | Coming 2026</p>
-    </footer>
+<div class="max-w-lg text-center mb-10 px-4">
+<p class="tracking-widest text-sm md:text-base opacity-90 leading-relaxed uppercase">
+A <span class="text-[#40E0D0] font-bold">soulful GPS</span> for book lovers.
+Discover independent bookstores, quiet cafes, and literary landmarks along your exact route.
+</p>
+</div>
 
-    <!-- Firebase SDKs - FIXED URLS -->
-   <!-- Use the 'Compat' version which is more reliable for simple landing pages -->
-<!-- Firebase SDKs -->
+<div class="w-full max-w-md">
+
+<p id="signup-prompt" class="text-center text-xs uppercase tracking-widest mb-6 opacity-60">
+Get an invite to the first trip
+</p>
+
+<form id="signup-form" class="flex flex-col gap-4">
+
+<!-- honeypot spam field -->
+<input type="text" id="website-field" style="display:none">
+
+<input
+id="email-input"
+type="email"
+placeholder="Enter your email..."
+class="bg-black/40 border border-white/20 rounded-none px-6 py-4 w-full input-glow transition-all duration-300 text-center"
+required
+>
+
+<button
+type="submit"
+id="submit-btn"
+class="bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] hover:bg-[#40E0D0] hover:text-[#1A1B2E] font-bold px-8 py-4 uppercase tracking-[0.2em] transition-all duration-300 active:scale-95"
+>
+Notify Me
+</button>
+
+</form>
+
+<p id="success-msg" class="tagline text-center mt-8 hidden text-xl animate-pulse">
+You're on the list, Navigator! <br>
+<span class="text-xs opacity-60 uppercase tracking-widest">
+See you on the road.
+</span>
+</p>
+
+</div>
+</main>
+
+<footer class="mt-20 opacity-40">
+<p class="text-[10px] uppercase tracking-[0.5em] font-light">
+EST. 1955 | Coming 2026
+</p>
+</footer>
+
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
 <script>
-  // 1. Configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAg-y6Bx075pPTxUZ8giyzOojx_c61O4BM",
-    authDomain: "the-literary-roads.firebaseapp.com",
-    projectId: "the-literary-roads",
-    storageBucket: "the-literary-roads.firebasestorage.app",
-    messagingSenderId: "305145573086",
-    appId: "1:305145573086:web:04a46d6d576ff01ec45c4f",
-    measurementId: "G-GDKFFPQYLT"
-  };
 
-  // 2. Initialize
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+const firebaseConfig = {
+apiKey:"AIzaSyAg-y6Bx075pPTxUZ8giyzOojx_c61O4BM",
+authDomain:"the-literary-roads.firebaseapp.com",
+projectId:"the-literary-roads",
+storageBucket:"the-literary-roads.firebasestorage.app",
+messagingSenderId:"305145573086",
+appId:"1:305145573086:web:04a46d6d576ff01ec45c4f",
+measurementId:"G-GDKFFPQYLT"
+};
 
-  // 3. Elements
-  const form = document.getElementById('signup-form');
-  const btn = document.getElementById('submit-btn');
-  const msg = document.getElementById('success-msg');
-  const prompt = document.getElementById('signup-prompt');
+firebase.initializeApp(firebaseConfig);
 
-  // 4. The Logic
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); // THIS STOPS THE "?" REFRESH
-    
-    const email = document.getElementById('email-input').value;
-    
-    btn.innerText = "SENDING...";
-    btn.disabled = true;
+const db = firebase.firestore();
 
-    db.collection("waitlist").add({
-        email: email,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    })
-    .then(() => {
-        // SUCCESS
-        form.style.display = 'none';
-        if (prompt) prompt.style.display = 'none';
-        msg.classList.remove('hidden');
-        console.log("Navigator Added!");
-    })
-    .catch((error) => {
-        // ERROR
-        console.error("Error: ", error);
-        alert("Roadblock! " + error.message);
-        btn.innerText = "NOTIFY ME";
-        btn.disabled = false;
-      });
-  });
+const form=document.getElementById("signup-form");
+const btn=document.getElementById("submit-btn");
+const msg=document.getElementById("success-msg");
+const prompt=document.getElementById("signup-prompt");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const email=document.getElementById("email-input").value.trim();
+
+const honeypot=document.getElementById("website-field").value;
+
+if(honeypot!==""){
+return;
+}
+
+const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(!emailPattern.test(email)){
+alert("Please enter a valid email address.");
+return;
+}
+
+btn.innerText="SENDING...";
+btn.disabled=true;
+
+db.collection("waitlist").doc(email).set({
+
+email:email,
+timestamp:firebase.firestore.FieldValue.serverTimestamp()
+
+})
+
+.then(()=>{
+
+form.style.display="none";
+
+if(prompt)prompt.style.display="none";
+
+msg.classList.remove("hidden");
+
+console.log("Navigator Added!");
+
+})
+
+.catch((error)=>{
+
+console.error("Error:",error);
+
+alert("Roadblock! "+error.message);
+
+btn.innerText="NOTIFY ME";
+
+btn.disabled=false;
+
+});
+
+});
+
 </script>
-
 
 </body>
 </html>
