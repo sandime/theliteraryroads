@@ -139,6 +139,74 @@
             </form>
         </div> -->
 
+        
+<!-- Email Signup (Now Active with Firebase) -->
+<div class="w-full max-w-md">
+    <p class="text-center text-xs uppercase tracking-widest mb-6 opacity-60">Get an invite to the first trip</p>
+    <form id="signup-form" class="flex flex-col gap-4">
+        <input 
+            id="email-input"
+            type="email" 
+            placeholder="Enter your email..." 
+            class="bg-black/40 border border-white/20 rounded-none px-6 py-4 w-full input-glow transition-all duration-300 text-center"
+            required
+        >
+        <button 
+            type="submit" 
+            id="submit-btn"
+            class="bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] hover:bg-[#40E0D0] hover:text-[#1A1B2E] font-bold px-8 py-4 uppercase tracking-[0.2em] transition-all duration-300 active:scale-95"
+        >
+            Notify Me
+        </button>
+    </form>
+    <p id="success-msg" class="tagline text-center mt-4 hidden">You're on the list, Navigator!</p>
+</div>
+
+<!-- Firebase SDKs -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com";
+
+  // PASTE YOUR FIREBASE CONFIG HERE:
+  const firebaseConfig = {
+  apiKey: "AIzaSyAg-y6Bx075pPTxUZ8giyzOojx_c61O4BM",
+  authDomain: "the-literary-roads.firebaseapp.com",
+  projectId: "the-literary-roads",
+  storageBucket: "the-literary-roads.firebasestorage.app",
+  messagingSenderId: "305145573086",
+  appId: "1:305145573086:web:04a46d6d576ff01ec45c4f",
+  measurementId: "G-GDKFFPQYLT"  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const form = document.getElementById('signup-form');
+  const btn = document.getElementById('submit-btn');
+  const msg = document.getElementById('success-msg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email-input').value;
+    btn.innerText = "Sanding...";
+    btn.disabled = true;
+
+    try {
+      await addDoc(collection(db, "waitlist"), {
+        email: email,
+        timestamp: serverTimestamp()
+      });
+      form.classList.add('hidden');
+      msg.classList.remove('hidden');
+    } catch (error) {
+      console.error("Error: ", error);
+      btn.innerText = "Error - Try Again";
+      btn.disabled = false;
+    }
+  });
+</script>
+
+        
+        
     </main>
 
     <!-- Footer Visual -->
