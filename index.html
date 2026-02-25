@@ -171,12 +171,9 @@
         
 <!-- Firebase SDKs -->
 <script type="module">
-  // Import the functions you need from the SDKs
   import { initializeApp } from "https://www.gstatic.com";
   import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com";
-
-  // Double-check these keys match your Firebase Console "Project Settings"
-  const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAg-y6Bx075pPTxUZ8giyzOojx_c61O4BM",
   authDomain: "the-literary-roads.firebaseapp.com",
   projectId: "the-literary-roads",
@@ -184,42 +181,40 @@
   messagingSenderId: "305145573086",
   appId: "1:305145573086:web:04a46d6d576ff01ec45c4f",
   measurementId: "G-GDKFFPQYLT"  };
+  try {
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    const form = document.getElementById('signup-form');
+    const btn = document.getElementById('submit-btn');
+    const msg = document.getElementById('success-msg');
 
-  const form = document.getElementById('signup-form');
-  const btn = document.getElementById('submit-btn');
-  const msg = document.getElementById('success-msg');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+      btn.innerText = "SENDING...";
+      btn.disabled = true;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const emailInput = document.getElementById('email-input');
-    const email = emailInput.value;
-    
-    btn.innerText = "SENDING...";
-    btn.disabled = true;
-
-    try {
-      await addDoc(collection(db, "waitlist"), {
-        email: email,
-        timestamp: serverTimestamp()
-      });
-
-      // 1. Hide the form so it disappears
-      document.getElementById('signup-form').classList.add('hidden');
-      
-      // 2. Show the success message
-      document.getElementById('success-msg').classList.remove('hidden');
-      
-      console.log("Success! Navigator added to the trail.");
-    } catch (error) {
-      console.error("Roadblock! ", error);
-      alert("Something went wrong. Check your connection!");
-    }
-  });
+      try {
+        await addDoc(collection(db, "waitlist"), {
+          email: email,
+          timestamp: serverTimestamp()
+        });
+        form.classList.add('hidden');
+        msg.classList.remove('hidden');
+      } catch (dbError) {
+        console.error("Database Error:", dbError);
+        alert("Database Error: " + dbError.message); // This will tell us the exact error
+        btn.innerText = "NOTIFY ME";
+        btn.disabled = false;
+      }
+    });
+  } catch (initError) {
+    console.error("Initialization Error:", initError);
+    alert("Initialization Error: " + initError.message);
+  }
 </script>
+
 
         
     </main>
