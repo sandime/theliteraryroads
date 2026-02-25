@@ -141,54 +141,66 @@
     </footer>
 
     <!-- Firebase SDKs - FIXED URLS -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com";
-      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com";
+   <script type="module">
+  import { initializeApp } from "https://www.gstatic.com";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com";
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyAg-y6Bx075pPTxUZ8giyzOojx_c61O4BM",
-        authDomain: "the-literary-roads.firebaseapp.com",
-        projectId: "the-literary-roads",
-        storageBucket: "the-literary-roads.firebasestorage.app",
-        messagingSenderId: "305145573086",
-        appId: "1:305145573086:web:04a46d6d576ff01ec45c4f",
-        measurementId: "G-GDKFFPQYLT"
-      };
+  const firebaseConfig = {
+    apiKey: "AIzaSyAg-y6Bx075pPTxUZ8giyzOojx_c61O4BM",
+    authDomain: "the-literary-roads.firebaseapp.com",
+    projectId: "the-literary-roads",
+    storageBucket: "the-literary-roads.firebasestorage.app",
+    messagingSenderId: "305145573086",
+    appId: "1:305145573086:web:04a46d6d576ff01ec45c4f",
+    measurementId: "G-GDKFFPQYLT"
+  };
+
+  // 1. Initializing and Catching Errors Immediately
+  let db;
+  try {
+    const app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    console.log("Firebase Engine Started.");
+  } catch (e) {
+    alert("Firebase failed to load! " + e.message);
+  }
+
+  const form = document.getElementById('signup-form');
+  const btn = document.getElementById('submit-btn');
+  const msg = document.getElementById('success-msg');
+  const prompt = document.getElementById('signup-prompt');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('email-input');
+      const email = emailInput ? emailInput.value : '';
+      
+      btn.innerText = "SENDING...";
+      btn.disabled = true;
 
       try {
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        const form = document.getElementById('signup-form');
-        const btn = document.getElementById('submit-btn');
-        const msg = document.getElementById('success-msg');
-        const prompt = document.getElementById('signup-prompt');
-
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const email = document.getElementById('email-input').value;
-          btn.innerText = "SENDING...";
-          btn.disabled = true;
-
-          try {
-            await addDoc(collection(db, "waitlist"), {
-              email: email,
-              timestamp: serverTimestamp()
-            });
-            form.classList.add('hidden');
-            prompt.classList.add('hidden');
-            msg.classList.remove('hidden');
-          } catch (dbError) {
-            console.error("Database Error:", dbError);
-            alert("Roadblock! " + dbError.message);
-            btn.innerText = "NOTIFY ME";
-            btn.disabled = false;
-          }
+        // 2. Testing the actual write
+        const docRef = await addDoc(collection(db, "waitlist"), {
+          email: email,
+          timestamp: serverTimestamp()
         });
-      } catch (initError) {
-        console.error("Initialization Error:", initError);
-        alert("Initialization Error: " + initError.message);
+        
+        console.log("Document written with ID: ", docRef.id);
+        form.classList.add('hidden');
+        if (prompt) prompt.classList.add('hidden');
+        msg.classList.remove('hidden');
+      } catch (dbError) {
+        console.error("Database Error:", dbError);
+        alert("Roadblock! " + dbError.message); // This will tell us if it's a Permission or Network issue
+        btn.innerText = "NOTIFY ME";
+        btn.disabled = false;
       }
-    </script>
+    });
+  } else {
+    console.error("Form element 'signup-form' not found!");
+  }
+</script>
+
 </body>
 </html>
